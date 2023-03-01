@@ -22,5 +22,29 @@ function hero(bullets, dragons) {
     return (bullets >= dragons * 2) ? true : false;
 }
 
+//5ab6538b379d20ad880000ab
+const areaOrPerimeter = function (l, w) {
+    return l === w ? l ** 2 : 2 * (l + w);
+};
 
-assert.strictEqual(numberToString(67), '67', 'Numbers are not equal!');
+//5583090cbe83f4fd8c000051
+function digitize(n) {
+    if (n == 0)
+        return [0];
+
+    let strNum = n.toString();
+    let result = [];
+    for (let i = strNum.length - 1; i >= 0; i--) {
+        result.push(Number(strNum[i]));
+    }
+    return result;
+    // Alternatives.
+    // 1.
+    // return String(n).split('').map(Number).reverse()
+    // 2.
+    // return Array.from(String(n), Number).reverse();
+    // 3.
+    // digitize = n => [...String(n)].map(Number).reverse() 
+}
+
+console.log(digitize(35231));
