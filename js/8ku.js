@@ -65,4 +65,29 @@ function firstNonConsecutive(arr) {
     return null;
 }
 
-console.log(firstNonConsecutive([1, 2, 3, 4, 6, 7, 8]));
+//5259b20d6021e9e14c0010d4
+function reverseWords(str) {
+    return str.split(' ').map(item => item.split('').reverse().join('')).join(' ');
+}
+
+//55a2d7ebe362935a210000b2
+function findSmallestInt(args) {
+    return Math.min(...args);
+}
+
+//55cbd4ba903825f7970000f5
+function getGrade(s1, s2, s3) {
+    let average = (s1 + s2 + s3) / 3;
+    if (average < 60)
+        return 'F';
+    else if (average < 70)
+        return 'D';
+    else if (average < 80)
+        return 'C';
+    else if (average < 90)
+        return 'B';
+    else
+        return 'A';
+}
+
+console.log(getGrade(95, 90, 93));
