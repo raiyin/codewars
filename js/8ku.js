@@ -90,4 +90,7 @@ function getGrade(s1, s2, s3) {
         return 'A';
 }
 
+//55d24f55d7dd296eb9000030
+const summation = (num) => num * (num + 1) / 2;
+
 console.log(getGrade(95, 90, 93));
