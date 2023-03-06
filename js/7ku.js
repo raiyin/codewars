@@ -16,4 +16,12 @@ function longest(s1, s2) {
     return (s1 + s2).split('').filter((v, i, arr) => arr.indexOf(v) === i).sort().join('');
 }
 
-console.log(longest('aretheyhere'));
+//5949481f86420f59480000e7
+function oddOrEven(array) {
+    return array.reduce((partialSum, a) => partialSum + a, 0) % 2 ? 'odd' : 'even';
+}
+
+//555eded1ad94b00403000071
+const SeriesSum = n => [...Array(n).keys()].reduce((result, i) => result + 1 / (1 + i * 3), 0).toFixed(2);
+
+console.log(SeriesSum(6));
