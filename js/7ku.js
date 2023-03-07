@@ -24,4 +24,14 @@ function oddOrEven(array) {
 //555eded1ad94b00403000071
 const SeriesSum = n => [...Array(n).keys()].reduce((result, i) => result + 1 / (1 + i * 3), 0).toFixed(2);
 
-console.log(SeriesSum(6));
+//542c0f198e077084c0000c2e
+function getDivisorsCnt(n) {
+    return [...Array(n / 2 + 1).keys()].filter(item => n % item === 0).length + 1;
+}
+
+//54bf85e3d5b56c7a05000cf9
+var number = function (array) {
+    return array.map((item, index) => ((index + 1) + ': ' + item));
+};
+
+console.log(number(["a", "b", "c"])[0]);
