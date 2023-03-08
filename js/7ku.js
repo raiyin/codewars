@@ -34,4 +34,17 @@ var number = function (array) {
     return array.map((item, index) => ((index + 1) + ': ' + item));
 };
 
-console.log(number(["a", "b", "c"])[0]);
+//54c27a33fb7da0db0100040e
+var isSquare = function (n) {
+    // 1. return Math.sqrt(n) % 1 === 0;
+    // 2. const isSquare = n => Number.isInteger(Math.sqrt(n));
+    return Math.pow(Math.floor(Math.sqrt(n)), 2) === n;
+};
+
+//55908aad6620c066bc00002a
+function XO(str) {
+    str = str.toLowerCase();
+    return str.split('').filter(item => item == 'o').length === str.split('').filter(item => item == 'x').length;
+}
+
+console.log(XO("xxxm"));
