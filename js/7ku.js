@@ -47,4 +47,24 @@ function XO(str) {
     return str.split('').filter(item => item == 'o').length === str.split('').filter(item => item == 'x').length;
 }
 
-console.log(XO("xxxm"));
+//57f609022f4d534f05000024
+function stray(numbers) {
+    for (let i = 0; i < numbers.length - 2; i++) {
+        if (numbers[i] === numbers[i + 1] && numbers[i + 1] === numbers[i + 2])
+            continue;
+        if (numbers[i] === numbers[i + 1] && numbers[i + 1] !== numbers[i + 2])
+            return numbers[i + 2];
+        else if (numbers[i] !== numbers[i + 1] && numbers[i + 1] === numbers[i + 2])
+            return numbers[i];
+        else
+            return numbers[i + 1];
+    }
+    // 1. const stray = nums => nums.reduce((a, b) => a ^ b);
+}
+
+//529eef7a9194e0cbc1000255
+var isAnagram = function (test, original) {
+    return test.toLowerCase().split('').sort().join('') === original.toLowerCase().split('').sort().join('');
+};
+
+console.log(isAnagram("foefet", "toffee"));
