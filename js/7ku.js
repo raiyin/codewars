@@ -67,4 +67,11 @@ var isAnagram = function (test, original) {
     return test.toLowerCase().split('').sort().join('') === original.toLowerCase().split('').sort().join('');
 };
 
-console.log(isAnagram("foefet", "toffee"));
+//578553c3a1b8d5c40300037c
+const binaryArrayToNumber = arr => {
+    return arr.reduce((result, v, i) => result + (v << (arr.length - i - 1)), 0);
+    // 1. return parseInt(arr.join(""), 2)
+    // 2. return arr.reduce( (a, b) => a << 1 | b );
+};
+
+console.log(binaryArrayToNumber([0, 1, 1, 0]));
