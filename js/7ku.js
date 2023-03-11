@@ -74,4 +74,11 @@ const binaryArrayToNumber = arr => {
     // 2. return arr.reduce( (a, b) => a << 1 | b );
 };
 
-console.log(binaryArrayToNumber([0, 1, 1, 0]));
+//546e2562b03326a88e000020
+function squareDigits(num) {
+    return parseInt(num.toString().split('').map(item => (parseInt(item) * parseInt(item)).toString()).join(''));
+    // 1. return Number(('' + num).split('').map(function (val) { return val * val;}).join(''));
+    // 2. return +num.toString().split('').map(i => i*i).join('');
+}
+
+console.log(squareDigits(3212));
