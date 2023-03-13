@@ -41,3 +41,14 @@ export function updateLight(current: string): string {
     //  }
     //return objTraffic[current]
 }
+
+//5174a4c0f2769dd8b1000003
+export function solution(nums: number[]): number[] {
+    return nums.sort((a, b) => a - b);
+}
+
+export function factorial(n: number): number {
+    if (n === 1 || n === 0)
+        return 1;
+    else return n * factorial(n - 1);
+}
