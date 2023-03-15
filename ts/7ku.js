@@ -15,4 +15,13 @@ function smallEnough(a, limit) {
 function flattenAndSort(inputArray) {
     return inputArray.reduce(function (prev, cur) { return prev.concat(__spreadArray([], cur, true)); }, []).sort(function (a, b) { return a - b; });
 }
-console.log(flattenAndSort([[1, 3, 5], [100], [2, 4, 6]]));
+//566fc12495810954b1000030
+function nbDig(n, d) {
+    return Array.from(Array(n + 1).keys())
+        .reduce(function (val, cur) { return val + (cur * cur).toString().split('').filter(function (item) { return item === d.toString(); }).length; }, 0);
+}
+//5390bac347d09b7da40006f6
+String.prototype.toJadenCase = function () {
+    return this.split(' ').map(function (item) { return item.charAt(0).toUpperCase() + item.slice(1); }).join(' ');
+};
+console.log("How can mirrors be real if our eyes aren't real".toJadenCase());
