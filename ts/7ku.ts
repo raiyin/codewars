@@ -15,12 +15,24 @@ function nbDig(n: number, d: number): number {
 }
 
 //5390bac347d09b7da40006f6
-String.prototype.toJadenCase = function () {
-    return this.split(' ').map(item => item.charAt(0).toUpperCase() + item.slice(1)).join(' ');
-};
+// String.prototype.toJadenCase = function () {
+//     return this.split(' ').map(item => item.charAt(0).toUpperCase() + item.slice(1)).join(' ');
+// };
 
-interface String {      // Declaration needed, don't remove it
-    toJadenCase(): string;
+// interface String {      // Declaration needed, don't remove it
+//     toJadenCase(): string;
+// }
+
+//5667e8f4e3f572a8f2000039
+export function accum(s: string): string {
+    // let charArr = [];
+    // for (let i = 0; i < s.length; i++, charArr.push('-')) {
+    //     charArr.push(s[i].toUpperCase());
+    //     charArr.push(s[i].toLowerCase().repeat(i));
+    // }
+    // charArr.pop();
+    // return charArr.join('');
+    return s.split('').map((cur, i) => cur.toUpperCase() + cur.toLowerCase().repeat(i)).join('-');
 }
 
-console.log("How can mirrors be real if our eyes aren't real".toJadenCase());
+console.log(accum("ZpglnRxqenU"));
