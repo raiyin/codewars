@@ -9,7 +9,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 exports.__esModule = true;
-exports.accum = void 0;
+exports.capitalize = exports.accum = void 0;
 //57cc981a58da9e302a000214
 function smallEnough(a, limit) {
     return a.every(function (item) { return item <= limit; });
@@ -39,7 +39,23 @@ function accum(s) {
     // }
     // charArr.pop();
     // return charArr.join('');
-    return s.split('').reduce(function (acc, cur, i) { return acc + cur.toUpperCase() + cur.toLowerCase().repeat(i) + '-'; }, '');
+    return s.split('').map(function (cur, i) { return cur.toUpperCase() + cur.toLowerCase().repeat(i); }).join('-');
 }
 exports.accum = accum;
-console.log(accum("ZpglnRxqenU"));
+//59cfc000aeb2844d16000075
+function capitalize(s) {
+    return s.split('').reduce(function (acc, cur, i) {
+        var tempArr = [];
+        if (i % 2 == 0) {
+            tempArr.push(acc[0].concat(cur.toUpperCase()));
+            tempArr.push(acc[1].concat(cur.toLowerCase()));
+        }
+        else {
+            tempArr.push(acc[0].concat(cur.toLowerCase()));
+            tempArr.push(acc[1].concat(cur.toUpperCase()));
+        }
+        return tempArr;
+    }, ['', '']);
+}
+exports.capitalize = capitalize;
+console.log(capitalize("abcdef"));

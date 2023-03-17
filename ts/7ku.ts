@@ -35,4 +35,34 @@ export function accum(s: string): string {
     return s.split('').map((cur, i) => cur.toUpperCase() + cur.toLowerCase().repeat(i)).join('-');
 }
 
-console.log(accum("ZpglnRxqenU"));
+//59cfc000aeb2844d16000075
+export function capitalize(s: string) {
+    return s.split('').reduce((acc, cur, i) => {
+        let tempArr = [];
+        if (i % 2 == 0) {
+            tempArr.push(acc[0].concat(cur.toUpperCase()));
+            tempArr.push(acc[1].concat(cur.toLowerCase()));
+        }
+        else {
+            tempArr.push(acc[0].concat(cur.toLowerCase()));
+            tempArr.push(acc[1].concat(cur.toUpperCase()));
+        }
+        return tempArr;
+    }, ['', '']);
+    // 1. export const capitalize = (s: string) => [
+    //     [...s].map((l, i) => i % 2 ? l : l.toUpperCase()).join(''),
+    //     [...s].map((l, i) => i % 2 ? l.toUpperCase() : l).join(''),
+    // ];
+}
+
+//5a3dd29055519e23ec000074
+export function checkExam(array1: string[], array2: string[]): number {
+    let result = array1.reduce((acc, cur, i) => {
+        if (array2[i] === "")
+            return acc;
+        return acc + ((cur === array2[i]) ? 4 : -1);
+    }, 0);
+    return result < 0 ? 0 : result;
+}
+
+console.log(checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"]));

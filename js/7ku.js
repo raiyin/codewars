@@ -81,4 +81,9 @@ function squareDigits(num) {
     // 2. return +num.toString().split('').map(i => i*i).join('');
 }
 
-console.log(squareDigits(3212));
+//51f2b4448cadf20ed0000386
+function removeUrlAnchor(url) {
+    return url.slice(0, url.indexOf('#') < 0 ? url.length : url.indexOf('#'));
+}
+
+console.log(removeUrlAnchor('www.codewars.com?page=1'));
