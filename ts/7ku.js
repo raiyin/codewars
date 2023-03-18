@@ -9,7 +9,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 exports.__esModule = true;
-exports.capitalize = exports.accum = void 0;
+exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
 //57cc981a58da9e302a000214
 function smallEnough(a, limit) {
     return a.every(function (item) { return item <= limit; });
@@ -56,6 +56,36 @@ function capitalize(s) {
         }
         return tempArr;
     }, ['', '']);
+    // 1. export const capitalize = (s: string) => [
+    //     [...s].map((l, i) => i % 2 ? l : l.toUpperCase()).join(''),
+    //     [...s].map((l, i) => i % 2 ? l.toUpperCase() : l).join(''),
+    // ];
 }
 exports.capitalize = capitalize;
-console.log(capitalize("abcdef"));
+//5a3dd29055519e23ec000074
+function checkExam(array1, array2) {
+    var result = array1.reduce(function (acc, cur, i) {
+        if (array2[i] === "")
+            return acc;
+        return acc + ((cur === array2[i]) ? 4 : -1);
+    }, 0);
+    return result < 0 ? 0 : result;
+}
+exports.checkExam = checkExam;
+//563b662a59afc2b5120000c6
+var nbYear = function (p0, percent, aug, p) {
+    var counter = 0;
+    var population = p0;
+    while (population < p) {
+        population = Math.floor(population + population * percent / 100 + aug);
+        counter++;
+    }
+    return counter;
+};
+exports.nbYear = nbYear;
+//539de388a540db7fec000642
+function checkCoupon(enteredCode, correctCode, currentDate, expirationDate) {
+    return (enteredCode === correctCode) && (Date.parse(currentDate) <= Date.parse(expirationDate));
+}
+exports.checkCoupon = checkCoupon;
+console.log(checkCoupon('123', '123', 'September 5, 2014', 'October 1, 2014'));

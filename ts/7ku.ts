@@ -65,4 +65,21 @@ export function checkExam(array1: string[], array2: string[]): number {
     return result < 0 ? 0 : result;
 }
 
-console.log(checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"]));
+//563b662a59afc2b5120000c6
+export const nbYear = (p0: number, percent: number, aug: number, p: number): number => {
+    let counter = 0;
+    let population = p0;
+    while (population < p) {
+        population = Math.floor(population + population * percent / 100 + aug);
+        counter++;
+    }
+    return counter;
+};
+
+//539de388a540db7fec000642
+export function checkCoupon(enteredCode: string, correctCode: string, currentDate: string, expirationDate: string): boolean {
+    return (enteredCode === correctCode) && (Date.parse(currentDate) <= Date.parse(expirationDate));
+}
+
+
+console.log(checkCoupon('123', '123', 'September 5, 2014', 'October 1, 2014'));
