@@ -81,5 +81,10 @@ export function checkCoupon(enteredCode: string, correctCode: string, currentDat
     return (enteredCode === correctCode) && (Date.parse(currentDate) <= Date.parse(expirationDate));
 }
 
+export function rowWeights(arr: number[]) {
+    return arr.reduce((acc, cur, index) => index % 2 ? [acc[0], acc[1] + cur] : [acc[0] + cur, acc[1]], [0, 0]);
+    // 1. return arr.reduce((r, e, i) => (r[i % 2] += e, r), [0, 0])
+}
 
-console.log(checkCoupon('123', '123', 'September 5, 2014', 'October 1, 2014'));
+
+console.log(rowWeights([13, 27, 49]));

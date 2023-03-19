@@ -9,7 +9,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 exports.__esModule = true;
-exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
+exports.rowWeights = exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
 //57cc981a58da9e302a000214
 function smallEnough(a, limit) {
     return a.every(function (item) { return item <= limit; });
@@ -88,4 +88,8 @@ function checkCoupon(enteredCode, correctCode, currentDate, expirationDate) {
     return (enteredCode === correctCode) && (Date.parse(currentDate) <= Date.parse(expirationDate));
 }
 exports.checkCoupon = checkCoupon;
-console.log(checkCoupon('123', '123', 'September 5, 2014', 'October 1, 2014'));
+function rowWeights(arr) {
+    return arr.reduce(function (acc, cur, index) { return index % 2 ? [acc[0], acc[1] + cur] : [acc[0] + cur, acc[1]]; }, [0, 0]);
+}
+exports.rowWeights = rowWeights;
+console.log(rowWeights([13, 27, 49]));
