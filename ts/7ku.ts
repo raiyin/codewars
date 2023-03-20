@@ -86,5 +86,12 @@ export function rowWeights(arr: number[]) {
     // 1. return arr.reduce((r, e, i) => (r[i % 2] += e, r), [0, 0])
 }
 
+export function isSortedAndHow(array: number[]): string {
+    if (array.every((v, i, a) => !i || a[i - 1] <= v))
+        return 'yes, ascending';
+    else if (array.every((v, i, a) => !i || a[i - 1] >= v))
+        return 'yes, descending';
+    return 'no';
+}
 
-console.log(rowWeights([13, 27, 49]));
+console.log(isSortedAndHow([1, 2]));

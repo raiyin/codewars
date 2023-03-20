@@ -9,7 +9,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 exports.__esModule = true;
-exports.rowWeights = exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
+exports.isSortedAndHow = exports.rowWeights = exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
 //57cc981a58da9e302a000214
 function smallEnough(a, limit) {
     return a.every(function (item) { return item <= limit; });
@@ -90,6 +90,15 @@ function checkCoupon(enteredCode, correctCode, currentDate, expirationDate) {
 exports.checkCoupon = checkCoupon;
 function rowWeights(arr) {
     return arr.reduce(function (acc, cur, index) { return index % 2 ? [acc[0], acc[1] + cur] : [acc[0] + cur, acc[1]]; }, [0, 0]);
+    // 1. return arr.reduce((r, e, i) => (r[i % 2] += e, r), [0, 0])
 }
 exports.rowWeights = rowWeights;
-console.log(rowWeights([13, 27, 49]));
+function isSortedAndHow(array) {
+    if (array.every(function (v, i, a) { return !i || a[i - 1] <= v; }))
+        return 'yes, ascending';
+    else if (array.every(function (v, i, a) { return !i || a[i - 1] >= v; }))
+        return 'yes, descending';
+    return 'no';
+}
+exports.isSortedAndHow = isSortedAndHow;
+console.log(isSortedAndHow([1, 2]));
