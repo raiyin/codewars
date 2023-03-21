@@ -9,7 +9,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 exports.__esModule = true;
-exports.isSortedAndHow = exports.rowWeights = exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
+exports.adjacentElementsProduct = exports.isSortedAndHow = exports.rowWeights = exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
 //57cc981a58da9e302a000214
 function smallEnough(a, limit) {
     return a.every(function (item) { return item <= limit; });
@@ -101,4 +101,12 @@ function isSortedAndHow(array) {
     return 'no';
 }
 exports.isSortedAndHow = isSortedAndHow;
-console.log(isSortedAndHow([1, 2]));
+function adjacentElementsProduct(arr) {
+    var max = arr[0] * arr[1];
+    for (var i = 2; i < arr.length; i++)
+        if (max < arr[i] * arr[i - 1])
+            max = arr[i] * arr[i - 1];
+    return max;
+}
+exports.adjacentElementsProduct = adjacentElementsProduct;
+console.log(adjacentElementsProduct([4, 12, 3, 1, 5]));

@@ -94,4 +94,13 @@ export function isSortedAndHow(array: number[]): string {
     return 'no';
 }
 
-console.log(isSortedAndHow([1, 2]));
+export function adjacentElementsProduct(arr: number[]): number {
+    let max = arr[0] * arr[1];
+    for (let i = 2; i < arr.length; i++)
+        if (max < arr[i] * arr[i - 1])
+            max = arr[i] * arr[i - 1];
+    return max;
+    // 1. return Math.max(...arr.slice(1).map((x, i) => x * arr[i]))
+}
+
+console.log(adjacentElementsProduct([4, 12, 3, 1, 5]));
