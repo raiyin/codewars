@@ -103,4 +103,17 @@ export function adjacentElementsProduct(arr: number[]): number {
     // 1. return Math.max(...arr.slice(1).map((x, i) => x * arr[i]))
 }
 
-console.log(adjacentElementsProduct([4, 12, 3, 1, 5]));
+export function sumTriangularNumbers(n: number): number {
+    if (n < 0)
+        return 0;
+    let sum = 0;
+    for (let i = 1; i <= n; i++)
+        sum += i * (i + 1) / 2;
+    return sum;
+}
+
+export function predictAge(age1: number, age2: number, age3: number, age4: number, age5: number, age6: number, age7: number, age8: number): number {
+    return Math.floor(Math.sqrt(age1 * age1 + age2 * age2 + age3 * age3 + age4 * age4 + age5 * age5 + age6 * age6 + age7 * age7 + age8 * age8) / 2);
+};
+
+console.log(predictAge(65, 60, 75, 55, 60, 63, 64, 45));

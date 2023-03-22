@@ -9,7 +9,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 exports.__esModule = true;
-exports.adjacentElementsProduct = exports.isSortedAndHow = exports.rowWeights = exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
+exports.predictAge = exports.sumTriangularNumbers = exports.adjacentElementsProduct = exports.isSortedAndHow = exports.rowWeights = exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
 //57cc981a58da9e302a000214
 function smallEnough(a, limit) {
     return a.every(function (item) { return item <= limit; });
@@ -107,6 +107,21 @@ function adjacentElementsProduct(arr) {
         if (max < arr[i] * arr[i - 1])
             max = arr[i] * arr[i - 1];
     return max;
+    // 1. return Math.max(...arr.slice(1).map((x, i) => x * arr[i]))
 }
 exports.adjacentElementsProduct = adjacentElementsProduct;
-console.log(adjacentElementsProduct([4, 12, 3, 1, 5]));
+function sumTriangularNumbers(n) {
+    if (n < 0)
+        return 0;
+    var sum = 0;
+    for (var i = 1; i <= n; i++)
+        sum += i * (i + 1) / 2;
+    return sum;
+}
+exports.sumTriangularNumbers = sumTriangularNumbers;
+function predictAge(age1, age2, age3, age4, age5, age6, age7, age8) {
+    return Math.floor(Math.sqrt(age1 * age1 + age2 * age2 + age3 * age3 + age4 * age4 + age5 * age5 + age6 * age6 + age7 * age7 + age8 * age8) / 2);
+}
+exports.predictAge = predictAge;
+;
+console.log(predictAge(65, 60, 75, 55, 60, 63, 64, 45));
