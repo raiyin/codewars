@@ -116,4 +116,21 @@ export function predictAge(age1: number, age2: number, age3: number, age4: numbe
     return Math.floor(Math.sqrt(age1 * age1 + age2 * age2 + age3 * age3 + age4 * age4 + age5 * age5 + age6 * age6 + age7 * age7 + age8 * age8) / 2);
 };
 
-console.log(predictAge(65, 60, 75, 55, 60, 63, 64, 45));
+export function solve(s: string) {
+    let fact = s.split('').reduce((acc, cur, i) => {
+        if (cur.toLowerCase() === cur) {
+            acc[0]++;
+        }
+        else
+            acc[1]++;
+        return acc;
+    }, [0, 0]);
+    return fact[0] >= fact[1] ? s.toLowerCase() : s.toUpperCase();
+}
+
+//5467e4d82edf8bbf40000155
+export function descendingOrder(n: number): number {
+    return +n.toString().split('').map(item => +item).sort((a, b) => b - a).join('');
+}
+
+console.log(descendingOrder(123456789));

@@ -9,7 +9,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 exports.__esModule = true;
-exports.predictAge = exports.sumTriangularNumbers = exports.adjacentElementsProduct = exports.isSortedAndHow = exports.rowWeights = exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
+exports.descendingOrder = exports.solve = exports.predictAge = exports.sumTriangularNumbers = exports.adjacentElementsProduct = exports.isSortedAndHow = exports.rowWeights = exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
 //57cc981a58da9e302a000214
 function smallEnough(a, limit) {
     return a.every(function (item) { return item <= limit; });
@@ -124,4 +124,21 @@ function predictAge(age1, age2, age3, age4, age5, age6, age7, age8) {
 }
 exports.predictAge = predictAge;
 ;
-console.log(predictAge(65, 60, 75, 55, 60, 63, 64, 45));
+function solve(s) {
+    var fact = s.split('').reduce(function (acc, cur, i) {
+        if (cur.toLowerCase() === cur) {
+            acc[0]++;
+        }
+        else
+            acc[1]++;
+        return acc;
+    }, [0, 0]);
+    return fact[0] >= fact[1] ? s.toLowerCase() : s.toUpperCase();
+}
+exports.solve = solve;
+//5467e4d82edf8bbf40000155
+function descendingOrder(n) {
+    return +n.toString().split('').map(function (item) { return +item; }).sort(function (a, b) { return b - a; }).join('');
+}
+exports.descendingOrder = descendingOrder;
+console.log(descendingOrder(123456789));
