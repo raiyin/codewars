@@ -133,4 +133,18 @@ export function descendingOrder(n: number): number {
     return +n.toString().split('').map(item => +item).sort((a, b) => b - a).join('');
 }
 
-console.log(descendingOrder(123456789));
+//5680781b6b7c2be860000036
+export function vowelIndices(word: string): number[] {
+    return word.toLowerCase().split('').reduce((acc, cur, i) => {
+        if (cur === 'a' || cur === 'e' || cur === 'i' || cur === 'o' || cur === 'u' || cur === 'y')
+            acc.push(i + 1);
+        return acc;
+    }, Array<number>());
+}
+
+//51fd6bc82bc150b28e0000ce
+export function noOdds(values: number[]): number[] {
+    return values.filter(item => item % 2 === 0);
+}
+
+console.log(vowelIndices("orange"));

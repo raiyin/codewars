@@ -9,7 +9,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 exports.__esModule = true;
-exports.descendingOrder = exports.solve = exports.predictAge = exports.sumTriangularNumbers = exports.adjacentElementsProduct = exports.isSortedAndHow = exports.rowWeights = exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
+exports.vowelIndices = exports.descendingOrder = exports.solve = exports.predictAge = exports.sumTriangularNumbers = exports.adjacentElementsProduct = exports.isSortedAndHow = exports.rowWeights = exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
 //57cc981a58da9e302a000214
 function smallEnough(a, limit) {
     return a.every(function (item) { return item <= limit; });
@@ -141,4 +141,13 @@ function descendingOrder(n) {
     return +n.toString().split('').map(function (item) { return +item; }).sort(function (a, b) { return b - a; }).join('');
 }
 exports.descendingOrder = descendingOrder;
-console.log(descendingOrder(123456789));
+//5680781b6b7c2be860000036
+function vowelIndices(word) {
+    return word.toLowerCase().split('').reduce(function (acc, cur, i) {
+        if (cur === 'a' || cur === 'e' || cur === 'i' || cur === 'o' || cur === 'u' || cur === 'y')
+            acc.push(i + 1);
+        return acc;
+    }, Array());
+}
+exports.vowelIndices = vowelIndices;
+console.log(vowelIndices("orange"));
