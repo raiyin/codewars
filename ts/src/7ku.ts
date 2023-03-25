@@ -147,4 +147,13 @@ export function noOdds(values: number[]): number[] {
     return values.filter(item => item % 2 === 0);
 }
 
-console.log(vowelIndices("orange"));
+export function minSum(arr: number[]): number {
+    let result = 0;
+    arr.sort((a, b) => a - b);
+    for (let i = 0; i < arr.length / 2; i++) {
+        result += (arr[i] * arr[arr.length - i - 1]);
+    }
+    return result;
+}
+
+console.log(minSum([9, 2, 8, 7, 5, 4, 0, 6]));

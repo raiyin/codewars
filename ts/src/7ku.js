@@ -9,7 +9,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 exports.__esModule = true;
-exports.vowelIndices = exports.descendingOrder = exports.solve = exports.predictAge = exports.sumTriangularNumbers = exports.adjacentElementsProduct = exports.isSortedAndHow = exports.rowWeights = exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
+exports.minSum = exports.noOdds = exports.vowelIndices = exports.descendingOrder = exports.solve = exports.predictAge = exports.sumTriangularNumbers = exports.adjacentElementsProduct = exports.isSortedAndHow = exports.rowWeights = exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
 //57cc981a58da9e302a000214
 function smallEnough(a, limit) {
     return a.every(function (item) { return item <= limit; });
@@ -150,4 +150,18 @@ function vowelIndices(word) {
     }, Array());
 }
 exports.vowelIndices = vowelIndices;
-console.log(vowelIndices("orange"));
+//51fd6bc82bc150b28e0000ce
+function noOdds(values) {
+    return values.filter(function (item) { return item % 2 === 0; });
+}
+exports.noOdds = noOdds;
+function minSum(arr) {
+    var result = 0;
+    arr.sort(function (a, b) { return a - b; });
+    for (var i = 0; i < arr.length / 2; i++) {
+        result += (arr[i] * arr[arr.length - i - 1]);
+    }
+    return result;
+}
+exports.minSum = minSum;
+console.log(minSum([9, 2, 8, 7, 5, 4, 0, 6]));
