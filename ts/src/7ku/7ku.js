@@ -9,7 +9,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 exports.__esModule = true;
-exports.minSum = exports.noOdds = exports.vowelIndices = exports.descendingOrder = exports.solve = exports.predictAge = exports.sumTriangularNumbers = exports.adjacentElementsProduct = exports.isSortedAndHow = exports.rowWeights = exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
+exports.solveone = exports.oper = exports.horMirror = exports.vertMirror = exports.minSum = exports.noOdds = exports.vowelIndices = exports.descendingOrder = exports.solve = exports.predictAge = exports.sumTriangularNumbers = exports.adjacentElementsProduct = exports.isSortedAndHow = exports.rowWeights = exports.checkCoupon = exports.nbYear = exports.checkExam = exports.capitalize = exports.accum = void 0;
 //57cc981a58da9e302a000214
 function smallEnough(a, limit) {
     return a.every(function (item) { return item <= limit; });
@@ -164,4 +164,33 @@ function minSum(arr) {
     return result;
 }
 exports.minSum = minSum;
-console.log(minSum([9, 2, 8, 7, 5, 4, 0, 6]));
+//56dbe0e313c2f63be4000b25
+function vertMirror(str) {
+    return str.split('\n').map(function (item) { return item.split('').reverse().join(''); }).join('\n');
+}
+exports.vertMirror = vertMirror;
+function horMirror(str) {
+    return str.split('\n').reverse().join('\n');
+}
+exports.horMirror = horMirror;
+function oper(fct, s) {
+    return fct(s);
+}
+exports.oper = oper;
+//59d9ff9f7905dfeed50000b0
+function solveone(arr) {
+    var alpha = 'abcdefghijklmnopqrstuvwxyz';
+    return arr.reduce(function (acc, cur) {
+        var counter = 0;
+        cur = cur.toLocaleLowerCase();
+        for (var j = 0; j < cur.length; j++) {
+            if (cur[j] == alpha[j]) {
+                counter++;
+            }
+        }
+        acc.push(counter);
+        return acc;
+    }, Array());
+}
+exports.solveone = solveone;
+console.log(solveone(["IAMDEFANDJKL", "thedefgh", "xyzDEFghijabc"]));

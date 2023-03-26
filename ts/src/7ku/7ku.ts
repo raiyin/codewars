@@ -156,4 +156,32 @@ export function minSum(arr: number[]): number {
     return result;
 }
 
-console.log(minSum([9, 2, 8, 7, 5, 4, 0, 6]));
+//56dbe0e313c2f63be4000b25
+export function vertMirror(str: string) {
+    return str.split('\n').map(item => item.split('').reverse().join('')).join('\n');
+}
+
+export function horMirror(str: string) {
+    return str.split('\n').reverse().join('\n');
+}
+export function oper(fct: (s: string) => string, s: string) {
+    return fct(s);
+}
+
+//59d9ff9f7905dfeed50000b0
+export function solveone(arr: string[]) {
+    let alpha = 'abcdefghijklmnopqrstuvwxyz';
+    return arr.reduce((acc, cur) => {
+        let counter = 0;
+        cur = cur.toLocaleLowerCase();
+        for (let j = 0; j < cur.length; j++) {
+            if (cur[j] == alpha[j]) {
+                counter++;
+            }
+        }
+        acc.push(counter);
+        return acc;
+    }, Array<number>());
+}
+
+console.log(solveone(["IAMDEFANDJKL", "thedefgh", "xyzDEFghijabc"]));
