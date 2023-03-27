@@ -13,4 +13,16 @@ function solution(number) {
     return sum;
 }
 
-console.log(solution(10));
+
+//546f922b54af40e1e90001da
+function alphabetPosition(text) {
+    let alpha = 'abcdefghijklmnopqrstuvwxyz';
+    return text.toLowerCase().split('').reduce((acc, curr) => {
+        if (alpha.indexOf(curr) > -1) {
+            acc.push(alpha.indexOf(curr) + 1);
+        }
+        return acc;
+    }, []).join(' ');
+}
+
+console.log(alphabetPosition("The sunset sets at twelve o' clock."));
