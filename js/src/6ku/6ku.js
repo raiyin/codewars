@@ -25,4 +25,26 @@ function alphabetPosition(text) {
     }, []).join(' ');
 }
 
-console.log(alphabetPosition("The sunset sets at twelve o' clock."));
+//54da539698b8a2ad76000228
+function isValidWalk(walk) {
+    // return walk.length === 10
+    //     && walk.filter(i => i === 'n').length === walk.filter(i => i === 's').length
+    //     && walk.filter(i => i === 'w').length === walk.filter(i => i === 'e').length;
+    // More optimized version.
+    let dx = 0;
+    let dy = 0;
+    let dt = walk.length;
+    walk.forEach(i => {
+        if (i == 'n')
+            dy++;
+        else if (i == 's')
+            dy--;
+        else if (i == 'w')
+            dx++;
+        else
+            dx--;
+    });
+    return dx === 0 && dy === 0 && dt === 10;
+}
+
+console.log(isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']));
