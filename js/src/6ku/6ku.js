@@ -47,4 +47,29 @@ function isValidWalk(walk) {
     return dx === 0 && dy === 0 && dt === 10;
 }
 
-console.log(isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']));
+//5f7c38eb54307c002a2b8cc8
+function removeParentheses(s) {
+    let openIndex = 0;
+    let closeIndicator = 0;
+    for (let index = 0; index < s.length; index++) {
+        if (s[index] === '(') {
+            if (openIndex == 0)
+                openIndex = index;
+            closeIndicator++;
+        }
+        else if (s[index] === ')') {
+            closeIndicator--;
+            if (closeIndicator === 0) {
+                s = s.split(s.slice(openIndex, index + 1)).join('');
+                index = openIndex - 1;
+                openIndex = 0;
+            }
+        }
+        else if (index === s.length - 1 && openIndex !== 0) {
+            s = s.substring(0, openIndex);
+        }
+    }
+    return s;
+}
+
+console.log(removeParentheses("a(b(c))"));
