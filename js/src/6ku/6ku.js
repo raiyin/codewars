@@ -72,4 +72,29 @@ function removeParentheses(s) {
     return s;
 }
 
-console.log(removeParentheses("a(b(c))"));
+//5895326bcc949f496b00003e
+function boxBlur(image) {
+    let width = image[0].length;
+    let hight = image.length;
+    let result = [];
+    for (let i = 0; i < hight - 2; i++)
+        result.push([]);
+
+    for (let rowIndex = 1; rowIndex < hight - 1; rowIndex++) {
+        for (let columnIndex = 1; columnIndex < width - 1; columnIndex++) {
+            let prevRow = image[rowIndex - 1].slice(columnIndex - 1, columnIndex + 2).reduce((sum, num) => sum + num);
+            let curRow = image[rowIndex].slice(columnIndex - 1, columnIndex + 2).reduce((sum, num) => sum + num);
+            let nextRow = image[rowIndex + 1].slice(columnIndex - 1, columnIndex + 2).reduce((sum, num) => sum + num);
+            let average = Math.floor((prevRow + curRow + nextRow) / 9);
+            result[rowIndex - 1].push(average);
+        }
+    }
+    return result;
+    // 1. boxBlur = a => a.slice(1, -1).map((r, i) => r.slice(1, -1).map((_, j) => ((b = k => (t = a[i + k])[j] + t[j + 1] + t[j + 2])(0) + b(1) + b(2)) / 9 | 0));
+}
+
+var image = [
+    [1, 1, 1],
+    [1, 7, 1],
+    [1, 1, 1]];
+console.log(boxBlur(image));
