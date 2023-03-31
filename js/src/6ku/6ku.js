@@ -97,4 +97,26 @@ var image = [
     [1, 1, 1],
     [1, 7, 1],
     [1, 1, 1]];
-console.log(boxBlur(image));
+
+//57f4ccf0ab9a91c3d5000054
+function chmodCalculator(perm) {
+    const str2num = str => {
+        let hexRight = 0;
+        if (str.includes('r'))
+            hexRight += 4;
+        if (str.includes('w'))
+            hexRight += 2;
+        if (str.includes('x'))
+            hexRight += 1;
+        return hexRight;
+    };
+    let result = '';
+    result += Object.keys(perm).includes('user') ? str2num(perm['user']) : '0';
+    result += Object.keys(perm).includes('group') ? str2num(perm['group']) : '0';
+    result += Object.keys(perm).includes('other') ? str2num(perm['other']) : '0';
+    return result;
+    // 1. return [p.user, p.group, p.other].map((p = '---') => (p[0] == 'r') * 4 + (p[1] == 'w') * 2 + (p[2] == 'x')).join('');
+    // 2. if( 'user' in perm )
+}
+
+console.log(chmodCalculator({ user: 'rwx', group: 'r-x', other: 'r-x' }));
