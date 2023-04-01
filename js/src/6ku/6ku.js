@@ -119,4 +119,9 @@ function chmodCalculator(perm) {
     // 2. if( 'user' in perm )
 }
 
-console.log(chmodCalculator({ user: 'rwx', group: 'r-x', other: 'r-x' }));
+//576757b1df89ecf5bd00073b
+function towerBuilder(nFloors) {
+    return [...Array(nFloors + 1).keys()].slice(1).map(index => `${' '.repeat(nFloors - index)}${'*'.repeat(2 * index - 1)}${' '.repeat(nFloors - index)}`);
+}
+
+console.log(towerBuilder(2));
