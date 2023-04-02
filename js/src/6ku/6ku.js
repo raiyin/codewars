@@ -124,4 +124,45 @@ function towerBuilder(nFloors) {
     return [...Array(nFloors + 1).keys()].slice(1).map(index => `${' '.repeat(nFloors - index)}${'*'.repeat(2 * index - 1)}${' '.repeat(nFloors - index)}`);
 }
 
-console.log(towerBuilder(2));
+//58bf67eb68d8469e3c000041
+function findDuplicatePhoneNumbers(phoneNumbers) {
+    let mapping = {
+        'a': '2', 'b': '2', 'c': '2', 'd': '3',
+        'e': '3', 'f': '3', 'g': '4', 'h': '4',
+        'i': '4', 'j': '5', 'k': '5', 'l': '5',
+        'm': '6', 'n': '6', 'o': '6', 'p': '7',
+        'r': '7', 's': '7', 't': '8', 'u': '8',
+        'v': '8', 'w': '9', 'x': '9', 'y': '9',
+        '1': '1', '2': '2', '3': '3', '4': '4',
+        '5': '5', '6': '6', '7': '7', '8': '8',
+        '9': '9', '0': '0'
+    };
+    let distincts = phoneNumbers.map(item => item.replaceAll('-', '').toLowerCase().split('').map(i => mapping[i]).join(''))
+        .reduce((acc, cur, _, array) => {
+            let count = array.filter(t => t == cur).length;
+            if (count == 1)
+                return acc;
+            acc[cur] = array.filter(t => t == cur).length;
+            return acc;
+        }, {});
+    return Object.keys(distincts)
+        .reduce((acc, cur) => { acc.push(`${cur}:${distincts[cur]}`); return acc; }, [])
+        .map(str => str.slice(0, 3) + '-' + str.slice(3))
+        .sort();
+}
+
+console.log(findDuplicatePhoneNumbers([
+
+    "4873279",
+    "ITS-EASY",
+    "888-4567",
+    "3-10-10-10",
+    "888-GLOP",
+    "TUT-GLOP",
+    "967-11-11",
+    "310-GINO",
+    "F101010",
+    "888-1200",
+    "-4-8-7-3-2-7-9-",
+    "487-3279"
+]));
