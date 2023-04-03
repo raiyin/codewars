@@ -151,18 +151,25 @@ function findDuplicatePhoneNumbers(phoneNumbers) {
         .sort();
 }
 
-console.log(findDuplicatePhoneNumbers([
+//58bcd7f2f6d3b11fce000025
+function directionInGrid(n, m) {
+    while (true) {
+        n--;
+        if (n == 0)
+            return 'R';
 
-    "4873279",
-    "ITS-EASY",
-    "888-4567",
-    "3-10-10-10",
-    "888-GLOP",
-    "TUT-GLOP",
-    "967-11-11",
-    "310-GINO",
-    "F101010",
-    "888-1200",
-    "-4-8-7-3-2-7-9-",
-    "487-3279"
-]));
+        m--;
+        if (m == 0)
+            return 'D';
+
+        n--;
+        if (n == 0)
+            return 'L';
+
+        m--;
+        if (m == 0)
+            return 'U';
+    }
+}
+
+console.log(directionInGrid(3, 3));
