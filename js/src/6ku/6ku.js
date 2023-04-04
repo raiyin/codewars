@@ -173,3 +173,4 @@ function directionInGrid(n, m) {
 }
 
 console.log(directionInGrid(3, 3));
+// Сегодня я много фигачил по хх. Заслужил отдых.
