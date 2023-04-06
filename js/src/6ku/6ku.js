@@ -172,5 +172,14 @@ function directionInGrid(n, m) {
     }
 }
 
-console.log(directionInGrid(3, 3));
-// Сегодня я много фигачил по хх. Заслужил отдых.
+//58a6ac309b5762b7aa000030
+function circleSlash(n) {
+    let power = 0;
+    while (2 ** power <= n)
+        power++;
+    let rest = n - 2 ** (power - 1);
+    return 2 * rest + 1;
+    // 1. return (n-Math.pow(2,~~Math.log2(n)))*2+1
+}
+
+console.log(circleSlash(16));
