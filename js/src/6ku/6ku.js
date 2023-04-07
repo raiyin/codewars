@@ -182,4 +182,23 @@ function circleSlash(n) {
     // 1. return (n-Math.pow(2,~~Math.log2(n)))*2+1
 }
 
-console.log(circleSlash(16));
+//5264d2b162488dc400000001
+function spinWords(str) {
+    return str.split(' ').map(item => {
+        if (item.length < 5)
+            return item;
+        else {
+            return item.split('').reverse().join('');
+        }
+    }).join(' ');
+}
+
+//541c8630095125aba6000c00
+function digitalRoot(n) {
+    while (n.toString().length != 1)
+        n = n.toString().split('').map(item => +item).reduce((acc, cur) => acc + cur, 0);
+    return +n;
+    // 1. return (n - 1) % 9 + 1;
+}
+
+console.log(digitalRoot(493193));
