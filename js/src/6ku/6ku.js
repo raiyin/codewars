@@ -201,4 +201,16 @@ function digitalRoot(n) {
     // 1. return (n - 1) % 9 + 1;
 }
 
-console.log(digitalRoot(493193));
+//590938089ff3d186cb00004c
+function suffixSums(a) {
+    let sum = a.reduce((acc, cur) => acc + cur, 0);
+    let n = a.length;
+    let b = [sum];
+    for (let i = 0; i <= n - 2; i++) {
+        sum = sum - a[i];
+        b.push(sum);
+    }
+    return b;
+}
+
+console.log(suffixSums([1, 2, 3, -6]));
