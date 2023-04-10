@@ -213,4 +213,59 @@ function suffixSums(a) {
     return b;
 }
 
-console.log(suffixSums([1, 2, 3, -6]));
+//58663693b359c4a6560001d6
+function indexOf2dArray(array2d, itemtofind) {
+    let index = array2d.flat().indexOf(itemtofind);
+    let numColumns = array2d[0].length;
+    let row = parseInt(index / numColumns);
+    let col = index % numColumns;
+    return [row, col];
+}
+
+function mazeRunner(maze, directions) {
+    let position = indexOf2dArray(maze, 2);
+    let dim = maze.length;
+    for (let i = 0; i < directions.length; i++) {
+        switch (directions[i]) {
+            case 'N':
+                position[0]--;
+                break;
+            case 'S':
+                position[0]++;
+                break;
+            case 'E':
+                position[1]++;
+                break;
+            case 'W':
+                position[1]--;
+                break;
+            default:
+                break;
+        }
+
+        if (position[0] >= dim || position[1] >= dim || position[0] < 0 || position[1] < 0)
+            return 'Dead';
+
+        switch (maze[position[0]][position[1]]) {
+            case 1:
+                return 'Dead';
+            case 3:
+                return 'Finish';
+            default:
+                break;
+        }
+    }
+
+    return 'Lost';
+}
+
+var maze = [[1, 1, 1, 1, 1, 1, 1],
+[1, 0, 0, 0, 0, 0, 3],
+[1, 0, 1, 0, 1, 0, 1],
+[0, 0, 1, 0, 0, 0, 1],
+[1, 0, 1, 0, 1, 0, 1],
+[1, 0, 0, 0, 0, 0, 1],
+[1, 2, 1, 0, 1, 0, 1]];
+/////////////////////////////////////////
+
+console.log(mazeRunner(maze, ["N", "N", "N", "N", "N", "E", "E", "E", "E", "E", "W", "W"]));
