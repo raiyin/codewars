@@ -268,4 +268,22 @@ var maze = [[1, 1, 1, 1, 1, 1, 1],
 [1, 2, 1, 0, 1, 0, 1]];
 /////////////////////////////////////////
 
-console.log(mazeRunner(maze, ["N", "N", "N", "N", "N", "E", "E", "E", "E", "E", "W", "W"]));
+//599cf86d01a4108584000064
+function lengthOfRailway(sounds) {
+    sounds = sounds.replaceAll('呜呜呜', 's');
+    sounds = sounds.replaceAll('哐当', 't');
+    let speedHight = false;
+    let dist = 0;
+
+    for (let i = 0; i < sounds.length; i++) {
+        if (sounds[i] === 's')
+            speedHight = !speedHight;
+        else if (sounds[i] === 't' && speedHight)
+            dist += 20;
+        else if (sounds[i] === 't' && !speedHight)
+            dist += 10;
+    }
+    return dist;
+}
+
+console.log(lengthOfRailway("呜呜呜哐当哐当哐当哐当哐当呜呜呜哐当哐当哐当哐当哐当呜呜呜哐当哐当哐当哐当哐当呜呜呜哐当哐当哐当哐当哐当"));
