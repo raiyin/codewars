@@ -286,4 +286,16 @@ function lengthOfRailway(sounds) {
     return dist;
 }
 
-console.log(lengthOfRailway("呜呜呜哐当哐当哐当哐当哐当呜呜呜哐当哐当哐当哐当哐当呜呜呜哐当哐当哐当哐当哐当呜呜呜哐当哐当哐当哐当哐当"));
+//586560a639c5ab3a260000f3
+function rotate(str) {
+    let result = [];
+    let arr = str.split('');
+    for (let i = 0; i < arr.length; i++) {
+        arr.push(arr.shift());
+        result.push(arr.join(''));
+    }
+    return result;
+    // 1. return s.split("").map(e => s = s.slice(1) + s.slice(0, 1));
+}
+
+console.log(rotate("Hello"));
