@@ -298,4 +298,28 @@ function rotate(str) {
     // 1. return s.split("").map(e => s = s.slice(1) + s.slice(0, 1));
 }
 
-console.log(rotate("Hello"));
+//5a86073fb17101e453000258
+function sortEmotions(arr, order) {
+    let transform = (emo) => {
+        if (emo === 'T_T')
+            return 0;
+        if (emo === ':(')
+            return 1;
+        if (emo === ':|')
+            return 2;
+        if (emo === ':)')
+            return 3;
+        if (emo === ':D')
+            return 4;
+    };
+
+    arr.sort((a, b) => order ? -1 * (transform(a) - transform(b)) : (transform(a) - transform(b)));
+    return arr;
+
+    // 1.
+    // const emotions = { ':D': 1, ':)': 2, ':|': 3, ':(': 4, 'T_T': 5 };
+    // arr = arr.sort((a, b) => emotions[a] - emotions[b]);
+    // return order && arr || arr.reverse();
+}
+
+console.log(sortEmotions([':D', 'T_T', ':D', ':('], true));
