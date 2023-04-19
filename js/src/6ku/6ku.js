@@ -322,4 +322,9 @@ function sortEmotions(arr, order) {
     // return order && arr || arr.reverse();
 }
 
-console.log(sortEmotions([':D', 'T_T', ':D', ':('], true));
+//52ea928a1ef5cfec800003ee
+function ipToInt32(ip) {
+    return ip.split('.').reduce((acc, cur, i) => acc + Math.abs((+cur) << (24 - i * 8)), 0);
+}
+
+console.log(ipToInt32("128.32.10.1"));
