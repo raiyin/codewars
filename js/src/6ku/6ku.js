@@ -325,6 +325,68 @@ function sortEmotions(arr, order) {
 //52ea928a1ef5cfec800003ee
 function ipToInt32(ip) {
     return ip.split('.').reduce((acc, cur, i) => acc + Math.abs((+cur) << (24 - i * 8)), 0);
+
+    // 1. ip = ip.split('.');
+    // return  ((ip[0] << 24) + (ip[1] << 16) + (ip[2] << 8) + (ip[3] << 0))>>>0;
+    // 2. return ip.split(".").reduce((a, b) => a << 8 | b) >>> 0;
 }
 
-console.log(ipToInt32("128.32.10.1"));
+//596fd97f65ad2fc072000037
+class Converter {
+    constructor(size, type) {
+        if (type === 'B')
+            this.value = size;
+        else if (type === 'KB')
+            this.value = size * 1024;
+        else if (type === 'MB')
+            this.value = size * 1024 * 1024;
+        else if (type === 'GB')
+            this.value = size * 1024 * 1024 * 1024;
+        else if (type === 'TB')
+            this.value = size * 1024 * 1024 * 1024 * 1024;
+        else
+            throw new Error(`There is no such typ: ${type}`);
+
+        this.unit = type;
+    }
+
+    toFixed(num, fixed) {
+        //var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+        //return num.toString().match(re)[0];
+        return Math.trunc(num * Math.pow(10, fixed)) / Math.pow(10, fixed);
+    }
+
+    toB() {
+        this.unit = 'B';
+        this.size = this.value + ` ${this.unit}`;
+    }
+
+    toKB() {
+        this.unit = 'KB';
+        let temp = Number.isInteger(this.value / 1024) ? this.value / 1024 : (this.value / 1024);
+        this.size = this.toFixed(temp, 3) + ` ${this.unit}`;
+    }
+
+    toMB() {
+        this.unit = 'MB';
+        let temp = Number.isInteger(this.value / (1024 * 1024)) ? this.value / (1024 * 1024) : (this.value / (1024 * 1024));
+        this.size = this.toFixed(temp, 3) + ` ${this.unit}`;
+    }
+
+    toGB() {
+        this.unit = 'GB';
+        let temp = Number.isInteger(this.value / (1024 * 1024 * 1024)) ? this.value / (1024 * 1024 * 1024) : (this.value / (1024 * 1024 * 1024));
+        this.size = this.toFixed(temp, 3) + ` ${this.unit}`;
+    }
+
+    toTB() {
+        this.unit = 'TB';
+        let temp = Number.isInteger(this.value / (1024 * 1024 * 1024 * 1024)) ? this.value / (1024 * 1024 * 1024 * 1024) : (this.value / (1024 * 1024 * 1024 * 1024));
+        this.size = this.toFixed(temp, 3) + ` ${this.unit}`;
+    }
+}
+
+var file = new Converter(1099511627776, "B");
+file.toKB();
+console.log(file.unit); // 'MB'
+console.log(file.size); // '1048576 MB'
