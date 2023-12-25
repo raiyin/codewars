@@ -385,6 +385,21 @@ class Converter {
         this.size = this.toFixed(temp, 3) + ` ${this.unit}`;
     }
 }
+// 1.
+// class Converter {
+//     constructor(size, unit) {
+//         this.size = `${size} ${unit}`;
+//         this.unit = unit;
+//         this.units = ["B", "KB", "MB", "GB", "TB"];
+//         this.units.forEach(u => {
+//             this[`to${u}`] = () => {
+//                 const d = this.units.indexOf(u) - this.units.indexOf(this.unit);
+//                 this.unit = u;
+//                 this.size = `${Math.floor(+this.size.replace(/[^\d.]/g, "") / Math.pow(2, 10 * d) * 1000) / 1000} ${u}`;
+//             };
+//         });
+//     }
+// }
 
 var file = new Converter(1099511627776, "B");
 file.toKB();
