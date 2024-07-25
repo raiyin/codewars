@@ -2,4 +2,4 @@
 using tbank;
 
 var solution = new Solution();
-solution.firsTask();
+solution.pie();

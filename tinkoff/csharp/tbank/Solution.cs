@@ -17,8 +17,27 @@ namespace tbank
             int c = int.Parse(stringArray[2]);
             int d = int.Parse(stringArray[3]);
 
-            if(d>=b)
-            int result = a + c * (d - b);
+            int result;
+            if (d >= b)
+                result = a + c * (d - b);
+            else
+                result = a;
+            Console.WriteLine(result);
+        }
+
+        public void pie()
+        {
+            int input = int.Parse(Console.ReadLine()); //6
+            int result = 0;
+            while (input !=1) {
+                if (input % 2 == 0)
+                {
+                    input = input / 2;
+                }
+                else
+                    input--;
+                result++;
+            }
             Console.WriteLine(result);
         }
     }
