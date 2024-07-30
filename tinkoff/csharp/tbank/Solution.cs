@@ -29,7 +29,8 @@ namespace tbank
         {
             int input = int.Parse(Console.ReadLine()); //6
             int result = 0;
-            while (input !=1) {
+            while (input != 1)
+            {
                 if (input % 2 == 0)
                 {
                     input = input / 2;
@@ -39,6 +40,47 @@ namespace tbank
                 result++;
             }
             Console.WriteLine(result);
+        }
+
+        public bool IsValid(string s)
+        {
+            var stack = new Stack<char>();
+            char outChar = ' ';
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == '(' || s[i] == '{' || s[i] == '[')
+                {
+                    stack.Push(s[i]);
+                }
+                if (s[i] == ')' || s[i] == ']' || s[i] == '}')
+                {
+                    if (!stack.TryPop(out outChar))
+                    {
+                        return false;
+                    }
+
+                    if (s[i] == ')' && outChar == '(')
+                    {
+                        continue;
+                    }
+                    else if (s[i] == ']' && outChar == '[')
+                    {
+                        continue;
+                    }
+                    else if (s[i] == '}' && outChar == '{')
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            if (stack.Count != 0)
+                return false;
+            return true;
         }
     }
 }
