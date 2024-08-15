@@ -12,23 +12,9 @@ namespace leetcode
 {
     internal class OzonRoute
     {
-        // template
-        //using var input = new StreamReader(Console.OpenStandardInput());
-        //using var output = new StreamWriter(Console.OpenStandardOutput());
-
-        //var s = input.ReadLine().Split();
-        //int a = int.Parse(s[0]);
-        //int b = int.Parse(s[1]);
-        //output.Write(a + b);
-
         public void FirstTask()
         {
-            //using var input = new StreamReader(Console.OpenStandardInput());
             using var output = new StreamWriter(Console.OpenStandardOutput());
-
-            //var s = input.ReadLine().Split();
-            //int a = int.Parse(s[0]);
-            //int b = int.Parse(s[1]);
             output.Write("OK");
         }
 
@@ -156,46 +142,6 @@ namespace leetcode
 
             foreach (var result in results)
                 output.WriteLine(result);
-        }
-
-        public void jsonPrettify()
-        {
-            using var input = new StreamReader(Console.OpenStandardInput());
-            using var output = new StreamWriter(Console.OpenStandardOutput());
-
-            var setCount = int.Parse(input.ReadLine());
-
-            for (int setIndex = 0; setIndex < setCount; setIndex++)
-            {
-                int stringCount = int.Parse(input.ReadLine());
-                var sb = new StringBuilder();
-
-                //for (int strIndex = 0; strIndex < stringCount; strIndex++)
-                //{
-                //    sb.Append(input.ReadLine());
-                //}
-                sb.Append("{\"a\": \"f\",\"b\": { \"c\": { \"d\": [], \"e\": [\"ababa\"]} },\"c\": { \"k\": { } },\"d\": { \"d\": { \"e\": { } } }}");
-
-                var options = new JsonSerializerOptions();
-                options.MaxDepth = 100;
-                var node = JsonNode.Parse(sb.ToString());
-                var items = (node as JsonObject).AsEnumerable().ToList();
-                foreach (var item in items)
-                {
-                    processNode(item.Key);
-                    items.Remove(item);
-                }
-
-            }
-
-            void processNode(JsonNode node)
-            {
-                if (node == null)
-                { }
-                else
-                {
-                }
-            }
         }
 
         public void PackingBoxes()
@@ -326,6 +272,166 @@ namespace leetcode
                         }
                     }
                 }
+            }
+
+            foreach (var result in results)
+                output.WriteLine(result);
+        }
+
+        public void DeleteDigit()
+        {
+            using var input = new StreamReader(Console.OpenStandardInput());
+            using var output = new StreamWriter(Console.OpenStandardOutput());
+
+            var numberCount = int.Parse(input.ReadLine());
+            List<string> results = new List<string>();
+
+            for (int setIndex = 0; setIndex < numberCount; setIndex++)
+            {
+                char minDigit;
+                var s = input.ReadLine();
+
+                if (s.Length == 0 || s.Length == 1)
+                {
+                    results.Add("0");
+                    continue;
+                }
+
+                int minDigitIndex = -1;
+                for (int i = 0; i < s.Length - 1; i++)
+                {
+                    if (s[i] < s[i + 1])
+                    {
+                        minDigitIndex = i;
+                        break;
+                    }
+                }
+
+                if (minDigitIndex == -1)
+                {
+                    minDigitIndex = s.Length - 1;
+                }
+
+                results.Add(s.Remove(minDigitIndex, 1));
+            }
+            foreach (var result in results)
+                output.WriteLine(result);
+        }
+
+        public void DividingArrays()
+        {
+            using var input = new StreamReader(Console.OpenStandardInput());
+            using var output = new StreamWriter(Console.OpenStandardOutput());
+
+            List<long> results = new List<long>();
+            var setCount = int.Parse(input.ReadLine());
+            for (int setIndex = 0; setIndex < setCount; setIndex++)
+            {
+                long tempResult = 0;
+                var len = int.Parse(input.ReadLine());
+                int[] bottom = input.ReadLine().Split().Select(item => int.Parse(item)).ToArray();
+                int[] up = input.ReadLine().Split().Select(item => int.Parse(item)).ToArray();
+
+                for (int i = 0; i < bottom.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        tempResult = up[i] - bottom[i] + 1;
+                    }
+                    else
+                    {
+                        long mul = 0;
+                        mul = (up[i] / (i + 1)) - (bottom[i] / (i + 1));
+                        if ((bottom[i] % (i + 1)) == 0)
+                            mul++;
+                        tempResult = (tempResult * mul) % (1000000000 + 7);
+                    }
+                }
+                results.Add(tempResult % (1000000000 + 7));
+            }
+
+            foreach (var result in results)
+                output.WriteLine(result);
+        }
+
+        public void ValidationResponse()
+        {
+            using var input = new StreamReader(Console.OpenStandardInput());
+            using var output = new StreamWriter(Console.OpenStandardOutput());
+
+            List<string> results = new List<string>();
+
+            var setCount = int.Parse(input.ReadLine());
+            for (int setIndex = 0; setIndex < setCount; setIndex++)
+            {
+
+                int numCount = int.Parse(input.ReadLine());
+                string[] rawIn = input.ReadLine().Split(' ');
+                string rawOut = input.ReadLine();
+
+                if (rawIn.Length != numCount)
+                {
+                    results.Add("no");
+                    continue;
+                }
+
+                try
+                {
+                    int[] ints = rawIn.Select(item => int.Parse(item)).ToArray();
+                    Array.Sort(ints);
+                    string processOut = string.Join(" ", ints);
+                    if (processOut != rawOut)
+                    {
+                        results.Add("no");
+                    }
+                    else
+                    {
+                        results.Add("yes");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    results.Add("no");
+                    continue;
+                }
+            }
+
+            foreach (var result in results)
+                output.WriteLine(result);
+        }
+
+        public void MirrorPairs()
+        {
+            using var input = new StreamReader(Console.OpenStandardInput());
+            using var output = new StreamWriter(Console.OpenStandardOutput());
+
+            var results = new List<long>();
+            var setCount = int.Parse(input.ReadLine());
+            for (int setIndex = 0; setIndex < setCount; setIndex++)
+            {
+                int numCount = int.Parse(input.ReadLine());
+                long[] numbers = input.ReadLine().Split().Select(item => long.Parse(item)).ToArray();
+
+                var diffCountDict = new Dictionary<long, long>();
+                diffCountDict.Add(numbers[0] - numbers[1], 1);
+                long pairCount = 0;
+
+                for (int i = 1; i < numbers.Length - 1; i++)
+                {
+                    long diff = numbers[i] - numbers[i + 1];
+                    if (diffCountDict.ContainsKey(diff))
+                    {
+                        pairCount += diffCountDict[diff];
+                        diffCountDict[diff]++;
+                        if (numbers[i - 1] - numbers[i] == diff)
+                            pairCount--;
+                    }
+                    else
+                    {
+                        diffCountDict.Add(diff, 1);
+                    }
+                }
+                results.Add(pairCount);
             }
 
             foreach (var result in results)

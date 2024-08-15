@@ -1,10 +1,13 @@
-﻿namespace Route
+﻿using leetcode;
+
+namespace Route
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var route = new OzonRoute();
+            route.ProductID();
         }
     }
 }
