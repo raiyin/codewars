@@ -79,5 +79,27 @@ namespace mts
             string result = sum % 2 == 0 ? "1" : "0";
             Console.WriteLine(result);
         }
+
+        public void Stat_2()
+        {
+            var baseCount = int.Parse(Console.ReadLine());
+            var bases = new List<int>();
+            for (int i = 0; i < baseCount; i++)
+            {
+                bases.Add(int.Parse(Console.ReadLine()));
+            }
+            if (bases.Count >=2)
+            {
+                while (bases[1] != 0)
+                {
+                    bases.Sort((a, b) => b.CompareTo(a));
+                    bases[0] = bases[0] - bases[1];
+                    bases[1] = 0;
+                }
+            }
+
+            int result = bases[0] / 2;
+            Console.WriteLine(result);
+        }
     }
 }

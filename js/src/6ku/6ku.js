@@ -401,7 +401,32 @@ class Converter {
 //     }
 // }
 
-var file = new Converter(1099511627776, "B");
-file.toKB();
-console.log(file.unit); // 'MB'
-console.log(file.size); // '1048576 MB'
+//54b42f9314d9229fd6000d9c
+function duplicateEncode(word) {
+    var dict = {};
+    let result = '';
+    for (let i = 0; i < word.length; i++) {
+        let tempChar = word[i].toLowerCase();
+        if (dict[tempChar]) {
+            dict[tempChar]++;
+        }
+        else {
+            dict[tempChar] = 1;
+        }
+    }
+
+    for (let i = 0; i < word.length; i++) {
+        let tempChar = word[i].toLowerCase();
+        if (dict[tempChar] == 1) {
+            result += '(';
+        }
+        else {
+            result += ')';
+        }
+    }
+    return result;
+}
+
+
+
+console.log(duplicateEncode('(( @'));

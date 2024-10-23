@@ -2,4 +2,4 @@
 using mts;
 
 var decider = new Decider();
-decider.Stat();
+decider.Stat_2();
