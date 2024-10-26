@@ -1,4 +1,4 @@
-package solutions
+package ku_6
 
 import (
 	"fmt"
