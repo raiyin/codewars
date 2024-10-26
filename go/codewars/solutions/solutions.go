@@ -31,3 +31,17 @@ func DuplicateEncode(word string) string {
 	}
 	return result.String()
 }
+
+// func DuplicateEncode(word string) (r string) {
+// 	word = strings.ToLower(word)
+// 	t := map[rune]int{}
+// 	for _, c := range word { t[c]++ }
+// 	for _, c := range word {
+// 	  if t[c] == 1 {
+// 		r += "("
+// 	  } else {
+// 		r += ")"
+// 	  }
+// 	}
+// 	return
+//   }

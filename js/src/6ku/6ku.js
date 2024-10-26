@@ -427,6 +427,23 @@ function duplicateEncode(word) {
     return result;
 }
 
+//5453dce502949307cf000bff
+function nexus(users) {
+    let diff = Infinity;
+    let hash = 0;
+    for (const [key, value] of Object.entries(users)) {
+        let temp_diff = Math.abs(key - value);
+        if (temp_diff < diff) {
+            diff = temp_diff;
+            hash = key;
+        }
+        else if (temp_diff == diff) {
+            if (key < hash) {
+                hash = key;
+            }
+        }
+    }
+    return hash;
+}
 
-
-console.log(duplicateEncode('(( @'));
+console.log(nexus({ 1: 12540, 2: 12000, 6: 8000, 20: 6000, 100: 5000, 273: 4570, 500: 800, 600: 600, 800: 450, 3193: 278 }));
