@@ -19,4 +19,21 @@ function moveZeros(arr) {
 // 2.
 // return arr.sort((a, b) => b === 0 ? -1 : 0);
 
-console.log(moveZeros([1, 2, 0, 1, 0, 1, 0, 3, 0, 1]));
+// 520b9d2ad5c005041100000f
+function pigIt(str) {
+    let words = str.split(' ');
+    let result = '';
+    for (let i = 0; i < words.length; i++) {
+        if (/\p{L}/u.test(words[i][0])) {
+            words[i] = words[i].slice(1, words[i].length) + words[i][0] + 'ay';
+        }
+    }
+    result = words.join(' ');
+    return result;
+}
+// 1.
+// return str.replace(/(\w)(\w*)(\s|$)/g, "\$2\$1ay\$3");
+// 2.
+// return str.replace(/\w+/g, (w) => { return w.slice(1) + w[0] + 'ay'; });
+
+console.log(pigIt('Hello world !'));
