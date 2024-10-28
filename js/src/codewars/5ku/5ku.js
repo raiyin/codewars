@@ -36,4 +36,26 @@ function pigIt(str) {
 // 2.
 // return str.replace(/\w+/g, (w) => { return w.slice(1) + w[0] + 'ay'; });
 
-console.log(pigIt('Hello world !'));
+// 52685f7382004e774f0001f7
+function humanReadable(seconds) {
+    let hours = Math.floor(seconds / 3600);
+    let minutes = Math.floor((seconds - hours * 3600) / 60);
+    let sec = seconds - hours * 3600 - minutes * 60;
+    return hours.toLocaleString('en-US', {
+        minimumIntegerDigits: 2,
+        useGrouping: false
+    }) + ':' + minutes.toLocaleString('en-US', {
+        minimumIntegerDigits: 2,
+        useGrouping: false
+    }) + ':' + sec.toLocaleString('en-US', {
+        minimumIntegerDigits: 2,
+        useGrouping: false
+    });
+}
+// 1.
+// var pad = function(x) { return (x < 10) ? "0"+x : x; }
+// return pad(parseInt(seconds / (60*60))) + ":" +
+//        pad(parseInt(seconds / 60 % 60)) + ":" +
+//        pad(seconds % 60)
+
+console.log(humanReadable(0));
