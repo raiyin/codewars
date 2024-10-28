@@ -1,5 +1,7 @@
 package ku_5
 
+import "fmt"
+
 // 54b42f9314d9229fd6000d9c
 func MoveZeros(arr []int) []int {
 	var zero_arr []int
@@ -24,3 +26,22 @@ func MoveZeros(arr []int) []int {
 // 	}
 // }
 // return res
+
+// 52685f7382004e774f0001f7
+func HumanReadableTime(seconds int) string {
+	hours := seconds / 3600
+	minutes := (seconds - hours*3600) / 60
+	sec := seconds - hours*3600 - minutes*60
+	result := fmt.Sprintf("%02d", hours) + ":" + fmt.Sprintf("%02d", minutes) + ":" + fmt.Sprintf("%02d", sec)
+	return result
+}
+
+// 1.
+// m,s := s / 60, s % 60
+// h,m := m / 60, m % 60
+// return fmt.Sprintf("%02d:%02d:%02d",h,m,s)
+// 2.
+// hh := sec / 3600
+// mm := sec % 3600 / 60
+// ss := sec % 60
+// return fmt.Sprintf("%.2d:%.2d:%.2d", hh, mm, ss)

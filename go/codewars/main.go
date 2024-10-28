@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Printf("%v", ku_5.MoveZeros([]int{1, 2, 0, 1, 0, 1, 0, 3, 0, 1}))
+	fmt.Printf("%v", ku_5.HumanReadableTime(45296))
 }
