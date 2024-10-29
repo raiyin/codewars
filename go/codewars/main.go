@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Printf("%v", ku_5.HumanReadableTime(45296))
+	fmt.Printf("%v", ku_5.RGB(254, 253, 252))
 }

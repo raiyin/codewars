@@ -58,4 +58,33 @@ function humanReadable(seconds) {
 //        pad(parseInt(seconds / 60 % 60)) + ":" +
 //        pad(seconds % 60)
 
-console.log(humanReadable(0));
+
+// 513e08acc600c94f01000001
+function rgb(r, g, b) {
+    if (r < 0)
+        r = 0;
+    if (g < 0)
+        g = 0;
+    if (b < 0)
+        b = 0;
+    if (r > 255)
+        r = 255;
+    if (g > 255)
+        g = 255;
+    if (b > 255)
+        b = 255;
+    return `${r < 16 ? '0' : ''}${r.toString(16)}${g < 16 ? '0' : ''}${g.toString(16)}${b < 16 ? '0' : ''}${b.toString(16)}`.toUpperCase();
+}
+// 1.
+// return [r,g,b].map(function(x) {
+//     return ('0'+Math.max(0, Math.min(255, x)).toString(16)).slice(-2);
+// }).join('').toUpperCase();
+// 2.
+// const rgb = (...arg) => arg
+//   .map(it => Math.max(Math.min(it, 255), 0)
+//     .toString(16)
+//     .padStart(2, '0')
+//     .toUpperCase()
+//    ).join('');
+
+console.log(rgb(26, 0, 0));

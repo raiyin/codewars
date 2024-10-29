@@ -1,6 +1,9 @@
 package ku_5
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // 54b42f9314d9229fd6000d9c
 func MoveZeros(arr []int) []int {
@@ -45,3 +48,25 @@ func HumanReadableTime(seconds int) string {
 // mm := sec % 3600 / 60
 // ss := sec % 60
 // return fmt.Sprintf("%.2d:%.2d:%.2d", hh, mm, ss)
+
+// 513e08acc600c94f01000001
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func RGB(r, g, b int) string {
+	r = max(min(r, 255), 0)
+	g = max(min(g, 255), 0)
+	b = max(min(b, 255), 0)
+	return strings.ToUpper(fmt.Sprintf("%.2x%.2x%.2x", r, g, b))
+}
