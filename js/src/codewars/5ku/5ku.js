@@ -87,4 +87,29 @@ function rgb(r, g, b) {
 //     .toUpperCase()
 //    ).join('');
 
+// 5b258cf6d74b5b7105000035
+function checkCoord(i, j, n, m) {
+    if (i < 0 || j <= 0 || i > n - 1 || j > m - 1)
+        return false;
+    return true;
+}
+
+function containsObject(obj, list) {
+    return list.some(elem => elem.i === obj.i && elem.j === obj.j);
+}
+
+function findMostAdjacent(grid) {
+    let checked = [];
+
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < m; j++) {
+            if (containsObject(checked, { i: i, j: j }))
+                continue;
+
+            checked.push({ i: i, j: j });
+        }
+    }
+    return [0, 0];
+}
+
 console.log(rgb(26, 0, 0));

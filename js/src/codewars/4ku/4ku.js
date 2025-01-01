@@ -29,6 +29,18 @@ function convertQueryToMap(query) {
 
     return obj;
 }
-
-var q = 'user.name.firstname=Bob&user.name.lastname=Smith&user.favoritecolor=Light%20Blue';
-console.log(convertQueryToMap(q));
+// function convertQueryToMap(query) {
+//     var obj = {};
+//     query.split('&').map(function(params) {
+//       var parts = params.split('=');
+//       if (!parts[1]) return {};
+//       parts[0].split('.').reduce(function(cur, next, i, arr) {
+//         if (!cur[next]) cur[next] = {};
+//         if (i === arr.length - 1) cur[next] = decodeURIComponent(parts[1]);
+//         return cur[next];
+//       }, obj);
+//     });
+//     return obj;
+//   }
+// var q = 'user.name.firstname=Bob&user.name.lastname=Smith&user.favoritecolor=Light%20Blue';
+// console.log(convertQueryToMap(q));
