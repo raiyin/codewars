@@ -44,3 +44,39 @@ function convertQueryToMap(query) {
 //   }
 // var q = 'user.name.firstname=Bob&user.name.lastname=Smith&user.favoritecolor=Light%20Blue';
 // console.log(convertQueryToMap(q));
+
+
+// 55b7bb74a0256d4467000070
+function properFractions(n) {
+    if (n == 1)
+        return 0;
+    if (n == 2)
+        return 1;
+
+    let half = n / 2;
+    let map = new Map();
+    for (let i = 2; i <= n; i++) {
+        if (n % i == 0) {
+            n = n / i;
+            if (map.has(i)) {
+                map.set(i, map.get(i) + 1);
+            }
+            else {
+                map.set(i, 1);
+            }
+            i--;
+        }
+    }
+    let count = 1;
+    map.forEach((value, key) => {
+        if (value == 1) {
+            count = count * (key - 1);
+        }
+        else {
+            count = count * (Math.pow(key, value) - Math.pow(key, value - 1));
+        }
+    });
+    return count;
+}
+
+console.log(properFractions(5));//20
