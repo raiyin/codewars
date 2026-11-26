@@ -1,4 +1,3 @@
-import { assert } from 'chai';
 
 function numberToString(num) {
     return num.toString();
@@ -12,9 +11,15 @@ function boolToWord(bool) {
     return bool ? 'Yes' : 'No';
 }
 
-//5715eaedb436cf5606000381
+// Sum of positive (https://www.codewars.com/kata/5715eaedb436cf5606000381/)
 function positiveSum(arr) {
-    return arr.filter(item => item > 0).reduce((acc, currentValue) => acc + currentValue, 0);
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] >= 0)
+            sum += arr[i];
+    }
+    return sum;
+    //return arr.filter(item => item > 0).reduce((acc, currentValue) => acc + currentValue, 0);
 }
 
 //59ca8246d751df55cc00014c
@@ -44,7 +49,7 @@ function digitize(n) {
     // 2.
     // return Array.from(String(n), Number).reverse();
     // 3.
-    // digitize = n => [...String(n)].map(Number).reverse() 
+    // digitize = n => [...String(n)].map(Number).reverse()
 }
 
 //57f781872e3d8ca2a000007e
@@ -93,4 +98,36 @@ function getGrade(s1, s2, s3) {
 //55d24f55d7dd296eb9000030
 const summation = (num) => num * (num + 1) / 2;
 
-console.log(getGrade(95, 90, 93));
+// Square(n) Sum (https://www.codewars.com/kata/515e271a311df0350d00000f)
+function squareSum(numbers) {
+    let sum = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        sum += numbers[i] * numbers[i];
+    }
+    return sum;
+}
+
+
+// Remove First and Last Character (https://www.codewars.com/kata/56bc28ad5bdaeb48760009b0)
+function removeChar(str) {
+    return str.slice(1, -1);
+};
+
+// Count of positives / sum of negatives (https://www.codewars.com/kata/576bb71bbbcf0951d5000044)
+function countPositivesSumNegatives(input) {
+    if (input == null || input.length == 0)
+        return [];
+
+    let result = [0, 0];
+    for (let i = 0; i < input.length; i++) {
+        if (input[i] > 0)
+            result[0]++;
+        else if (input[i] < 0)
+            result[1] += input[i];
+    }
+    return result;
+}
+
+// console.log(getGrade(95, 90, 93));
+// console.log(squareSum([0, 3, 4, 5])); // =50
+console.log(removeChar('country')); // ='ountr'
